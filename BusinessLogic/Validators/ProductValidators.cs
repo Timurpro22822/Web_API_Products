@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Validators
 {
-    public class ProductValidator : AbstractValidator<ProductDTO>
+    public class ProductValidators : AbstractValidator<ProductDTO>
     {
-        public ProductValidator()
+        public ProductValidators()
         {
             int time = DateTime.Now.Year;
             RuleFor(x => x.Name)

@@ -1,5 +1,6 @@
 ﻿using BusinessLogic.DTOs;
 using Data.Models;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,10 @@ namespace BusinessLogic.Profiles
             CreateMap<ProductDTO, Product>()
                 .ForMember(d => d.ColorId, opt => opt.MapFrom(c => c.ColId))
                 .ForMember(d => d.CategoryId, opt => opt.MapFrom(c => c.CategId));
+
+            CreateMap<UserDTO, IdentityUser>()
+                .ForMember(d => d.UserName, opt => opt.MapFrom(s => s.Email))
+                .ForMember(d => d.Id, opt => opt.Ignore());
         }
     }
 }
