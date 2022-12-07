@@ -82,6 +82,11 @@ namespace Data.Data
                     Id = 3,
                     Name = "TVs"
                 },
+                new Category()
+                {
+                    Id = 4,
+                    Name = "Tablets"
+                }
             };
         }
         public static List<Color> GetColors()

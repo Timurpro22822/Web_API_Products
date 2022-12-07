@@ -1,6 +1,8 @@
 using BusinessLogic.Interfaces;
 using BusinessLogic.Services;
 using Data.Data;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,10 @@ builder.Services.AddDbContext<ProductsDbContext>(options => options.UseSqlServer
 
 // add AutoMapper service
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+// add FluentValidator with validation classes
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
 // add custom services
 builder.Services.AddScoped<IProductService, ProductService>();
