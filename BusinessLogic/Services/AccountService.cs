@@ -32,7 +32,10 @@ namespace BusinessLogic.Services
 
             if(!result.Succeeded)
             {
-                throw new Exception("Registration error!");
+                var errors = result.Errors.Select(e => e.Description);
+                var userResponse = new UserResponseDTO { Errors = errors };
+            
+                throw new Exception($"{userResponse}");
             }
         }
 
